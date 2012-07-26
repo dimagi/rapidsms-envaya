@@ -32,7 +32,7 @@ Add the following to `INSTALLED_BACKENDS`:
 
 `max_delay` is the number of seconds before RapidSMS will send messages to the wrong country code. By default, RapidSMS will only return messages to phones in the country that the EnvayaSMS instance uses. If you set max_delay to an integer, it will return messages to phones in other countries as a back-up in case there are no EnvayaSMS phones in the country the message is being sent to. This may cost a lot of money, since international texting is expensive. You can set `max_delay` to 0 to automatically send all messages to the first phone that checks for new messages.
 
-Finally, set up EnvayaSMS on an Android phone. See http://sms.envaya.org/install/ for how to install EnvayaSMS on a real phone, or http://sms.envaya.org/test/ for how to test on your local machine. EnvayaSMS has some great documentation on how to further set up EnvayaSMS--this guide will only tell you the bare minimum.
+Finally, set up EnvayaSMS on an Android phone. See http://sms.envaya.org/install/ for how to install EnvayaSMS on a real phone, or http://sms.envaya.org/test/ for how to test on your local machine. EnvayaSMS has some great documentation on how to further set up EnvayaSMS.
 
 Once you have EnvayaSMS running, set URL to point to the machine running RapidSMS, matching exactly the URL set above. Do the same with the password, if it is set in RapidSMS. (The password feature won't work unless you set the URL correctly.)
 
