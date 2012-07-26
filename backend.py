@@ -2,7 +2,7 @@ import datetime
 
 from django.http import HttpResponse, HttpResponseForbidden
 from rapidsms.backends.http import RapidHttpBackend # typo on their part :-/ goes to show how well maintained this code is..
-import json, time, sha, datetime, base64
+import json, time, sha, base64
 import phonenumbers
 from models import EnqueuedMessage
 
@@ -44,7 +44,7 @@ class EnvayaSMSBackend(RapidHttpBackend):
                 phone_number = '+%s' % phone_number
             print phone_number
             phone_number = phonenumbers.parse(phone_number)
-            messages = EnqueuedMessage.messages_for(phone_number.country_code, max_delay)
+            messages = EnqueuedMessage.messages_for(phone_number.country_code, self.max_delay)
             events = [{'event': 'send', 'messages': [{'to': data.recipient, 'message': data.message} for data in messages]}]
             messages.delete()
 

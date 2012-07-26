@@ -21,8 +21,8 @@ Add `"rapidsms-envaya"` to the list `INSTALLED_APPS`.
 Add the following to `INSTALLED_BACKENDS`:
 
 ```
-    'envaya': {
-        "ENGINE": "envayasms.backend",
+    'envayasms': {
+        "ENGINE": "rapidsms-envaya.backend",
         'port': 8880,
         'password': None, # set to a string to set the password
         'url': 'http://10.0.2.2:8880/', # important: this must exactly match what is entered in your Android phone
