@@ -15,7 +15,7 @@ class EnvayaSMSBackend(RapidHttpBackend):
     https://github.com/youngj/EnvayaSMS
     """
 
-    def configure(self, url = None, password=None, max_delay=60, **kwargs):
+    def configure(self, url=None, password=None, max_delay=None, **kwargs):
         self.url = url
         self.password = password
         self.max_delay = max_delay
@@ -44,7 +44,7 @@ class EnvayaSMSBackend(RapidHttpBackend):
                 phone_number = '+%s' % phone_number
             print phone_number
             phone_number = phonenumbers.parse(phone_number)
-            messages = EnqueuedMessage.messages_for(phone_number.country_code)
+            messages = EnqueuedMessage.messages_for(phone_number.country_code, max_delay)
             events = [{'event': 'send', 'messages': [{'to': data.recipient, 'message': data.message} for data in messages]}]
             messages.delete()
 
@@ -63,8 +63,6 @@ class EnvayaSMSBackend(RapidHttpBackend):
         if data.get('message_type') != 'call': # not sure how to handle incoming calls - ignore?
             sender = data.get('from', '')
             sms = data.get('message', '')
-        if not sms or not sender:
-            return None
         return super(EnvayaSMSBackend, self).message(sender, sms)
 
     def send(self, message):
