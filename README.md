@@ -23,7 +23,7 @@ Add the following to `INSTALLED_BACKENDS`:
 ```
     'envayasms': {
         "ENGINE": "rapidsms-envaya.backend",
-        'port': 8880,
+        'port': 8880, # feel free to change the port
         'password': None, # set to a string to set the password
         'url': 'http://10.0.2.2:8880/', # important: this must exactly match what is entered in your Android phone
         'max_delay': None
